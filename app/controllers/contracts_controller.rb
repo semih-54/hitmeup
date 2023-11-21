@@ -17,6 +17,6 @@ class ContractsController < ApplicationController
   end
 
   def edit
-    @contract = Contract.find(params[:id])
+   # @contract = Contract.find(params[:id])
   end
 end
