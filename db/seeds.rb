@@ -99,17 +99,17 @@ Skill.create!([{
 p "Created #{Skill.count} Skills"
 
 User.create!([{
-  email: killyou@flikflak.com,
+  email: "killyou@flikflak.com",
   username: "xXnico69Xx420",
   password: "123456"
 },
 {
-  email: Donaldtrump@tikitaka.com,
+  email: "Donaldtrump@tikitaka.com",
   username: "McLovin",
   password: "123456"
 },
 {
-  email: barack@therealone.com.gov,
+  email: "barack@therealone.com.gov",
   username: "ObamasToothbrush",
   password: "123456"
 }])
