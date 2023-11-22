@@ -11,9 +11,15 @@
   </head>
 
   <body>
+    <div class="navbar bg-black px-4" id="nav">
+      <a class="navbar-brand" href="#">
+      <%= image_tag("target.png", alt: "logo", width: 80, height: 80) %>
+        <a class="nav-link_1" href=# id="about-us">About us</a>
+      </a>
+    </div>
+    <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= render "shared/flashes" %>
-    <%= yield %>
   </body>
 </html>
