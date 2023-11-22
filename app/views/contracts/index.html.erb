@@ -1,23 +1,25 @@
-<div class="container">
-  <div class="p-3 text-center">
-    <h1> Your contract(s) </h1>
 
-    <% if @contracts.count == 0 %>
-      <p> You currently have no contracts. </p>
-    <% else %>
-      <% @contracts.each_with_index do |contract, index| %>
-          <div class="contract_card">
-            <strong> Contract #<%= index + 1 %>: </strong>
-            <p> To kill: <%#= contract.victim_name %>
-            <p> Age: <%#= contract.victim_age %>
-            <p> Selected Hitman: <%#= contract.hitman.username %> </p>
-            <p> Contract status: <%#= contract.booking.status %>
-          </div>
-          <br>
-        <% end %>
-    <% end %>
+<%= image_tag "https://avatars.githubusercontent.com/u/147330364?v=4", class: "avatar-large", alt: "avatar-large" %>
+<br>
+<h2> Hello contractor <%= current_user.username %> </h2>
+<br>
 
-    <%= link_to "Create a new contract", new_user_contract_path(current_user), class: "btn btn-dark"%>
+<% if @contracts.count == 0 %>
+  <p> You currently have no contract. </p>
+  <br>
+<% else %>
+  <% @contracts.each_with_index do |contract, index| %>
+    <div class="card-product">
+      <%= image_tag "https://avatars.githubusercontent.com/u/146410754?v=4", class: "avatar-large", alt: "avatar-large" %>
+        <div class="card-product-infos">
+          <h2> Contract #<%= index + 1 %>: </h2>
+          <p> To kill: <%= contract.victim_name %>, Age: <%= contract.victim_age %>
+          <p> Selected scenario: <%= contract.scenario.name %> </p>
+          <p> Selected hitman: <%= contract.hitman.user.username %> </p>
+          <p> Contract status: <%= contract.status %>
+        </div>
+    </div>
+  <% end %>
+<% end %>
 
-  </div>
-</div>
+<%= link_to "Create a new contract", new_contract_path %>
