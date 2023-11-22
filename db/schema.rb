@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_22_042232) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_22_082538) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,6 +46,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_22_042232) do
     t.text "victim_description"
     t.text "budget"
     t.string "status"
+    t.bigint "hitman_id", null: false
+    t.index ["hitman_id"], name: "index_contracts_on_hitman_id"
     t.index ["scenario_id"], name: "index_contracts_on_scenario_id"
     t.index ["user_id"], name: "index_contracts_on_user_id"
     t.index ["victim_id"], name: "index_contracts_on_victim_id"
@@ -110,9 +112,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_22_042232) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
+    t.boolean "is_hitman", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
 
   create_table "victims", force: :cascade do |t|
     t.string "name"
@@ -125,6 +129,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_22_042232) do
   add_foreign_key "availabilities", "hitmen"
   add_foreign_key "bookings", "contracts"
   add_foreign_key "bookings", "hitmen"
+  add_foreign_key "contracts", "hitmen"
   add_foreign_key "contracts", "scenarios"
   add_foreign_key "contracts", "users"
   add_foreign_key "contracts", "victims"

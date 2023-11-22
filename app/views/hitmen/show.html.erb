@@ -1,0 +1,16 @@
+<h1> Hello <%= @hitman.username %>, </h1>
+
+<% if @contracts.count == 0 %>
+  <p> You currently have no contracts. </p>
+<% else %>
+  <p> See below your contract(s): </h3>
+  <% @contracts.each_with_index do |contract, index| %>
+      <div class="contract_card">
+        <strong> Contract #<%= index + 1 %>: </strong>
+        <p> To kill: <%#= contract.victim_name %>
+        <p> Age: <%#= contract.victim_age %>
+        <p> Contract status: <%#= contract.status %>
+      </div>
+      <br>
+    <% end %>
+<% end %>

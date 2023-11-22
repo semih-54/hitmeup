@@ -1,0 +1,15 @@
+<img scr="https://avatars.githubusercontent.com/u/146623449?v=4">
+<br>
+<h2> Hello hitman <%= current_user.username %>, </h2>
+<br>
+
+<p> Tell us more about your talents </p>
+
+ <%= simple_form_for @hitman do |f| %>
+        <%= f.input :birth_year, label: "You birth year:" %>
+        <%#= f.input :photo, as: :file %>
+        <%= f.input :description, label: "Why choosing you?" %>
+        <%#= f.input :skill, label: "Describe your style (max 5 words):" %>
+        <%#= f.association :scenario, label: "Select your preferred scenario(s):" %>
+        <%= f.submit class: 'btn btn-primary' %>
+      <% end %>

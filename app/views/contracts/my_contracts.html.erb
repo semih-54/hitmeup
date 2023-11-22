@@ -1,0 +1,27 @@
+
+<img scr="https://avatars.githubusercontent.com/u/146623449?v=4">
+<br>
+<h2> Hello hitman <%= current_user.username %>, </h2>
+<br>
+<% if @contracts.count == 0 %>
+  <p> You currently have no contracts. </p>
+  <br>
+<% else %>
+  <p> You currently have <%= @contracts.count %> contract(s). </p>
+  <br>
+  <% @contracts.each_with_index do |contract, index| %>
+  <div class="card-product">
+    <%= image_tag "https://avatars.githubusercontent.com/u/146410754?v=4", class: "avatar-large", alt: "avatar-large" %>
+      <div class="card-product-infos">
+        <h2> Contract #<%= index + 1 %>: </h2>
+        <p> To kill: <%= contract.victim_name %>, Age: <%= contract.victim_age %>
+        <p> Victim: description: <%= contract.victim_description %>
+        <p> Selected scenario: <%= contract.scenario.name %> </p>
+        <p> Contract status: <%= contract.status %>
+      </div>
+  </div>
+      <br>
+    <% end %>
+<% end %>
+
+<%= link_to "Edit your profile", edit_hitman_path(current_user) %>
