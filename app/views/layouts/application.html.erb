@@ -18,8 +18,10 @@
       <a class="nav-link_1" href=# >About us</a>
     </div>
     <%= yield %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <footer>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
     <%= render "shared/flashes" %>
+    </footer>
   </body>
 </html>
