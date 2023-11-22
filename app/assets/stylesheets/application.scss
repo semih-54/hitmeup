@@ -14,6 +14,8 @@
 
 // Custom CSS
 
+//for home page
+
 // .avatar-bordered {
 //   width: 40px;
 //   border-radius: 60%;
@@ -65,7 +67,7 @@
   border-radius: 7px;
   height: 40px;
 }
-#default  Btn:hover{
+#defaultBtn:hover{
   background-color: red;
   border: 1px solid red ;
 }
@@ -101,4 +103,18 @@
   font-size: 64px;
   color: white  ;
   padding-top: 100px;
+}
+
+//for signup page
+
+#signup {
+  background-image: asset-url("hitman.jpeg");
+  height: calc(100vh - 106px);
+  background-position: center;
+}
+
+.devise-login {
+  font-size:medium;
+  color: black;
+  justify-content: center;
 }
