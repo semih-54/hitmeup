@@ -38,8 +38,18 @@
   padding-top: 10px;
 }
 
+.nav-link_1:hover{
+  color: red;
+  text-decoration:line-through;
+}
+
+#log-out-home:hover,
+#log-in-home:hover {
+  color: red;
+  text-decoration:line-through;
+}
+
 .banner {
-  // background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20220910/pngtree-set-8-bloody-handprint-on-brick-wall-dark-death-murder-photo-image_22781094.jpg);
   background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20231104/pngtree-sinister-monochrome-murder-texture-image_13747174.png);
   height: 960px;
   display: flex;
