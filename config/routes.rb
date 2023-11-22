@@ -2,10 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :contracts, only: [:index, :new, :create, :edit, :destroy] do
-    resources :hitmen, only: [:index]
   end
 
-  resources :hitmen, only: [:show, :edit]
+  resources :hitmen, only: [:show, :edit, :new, :create]
 
   root to: "pages#home"
   get "/my_contracts", to: "contracts#my_contracts"

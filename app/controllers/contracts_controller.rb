@@ -5,14 +5,17 @@ class ContractsController < ApplicationController
 
   def new
     @contract = Contract.new
+    @hitmen_names = Hitman.all.map { |hitman| hitman.user.username }
   end
 
   def my_contracts
-    @contracts = Contract.where(hitman: current_user.hitman)
+    @contracts = current_user.contracts_as_hitman
   end
 
   def create
-    @contract = Contract.new
+    @contract = Contract.new(contract_params)
+    @contract.user = current_user
+    @contract.status = "pending"
     if @contract.save
       redirect_to contracts_path
     else
@@ -28,5 +31,11 @@ class ContractsController < ApplicationController
     @contract = Contract.find(params[:id])
     @contract.destroy
     redirect_to user_contracts_path, status: :see_other
+  end
+
+  private
+
+  def contract_params
+    params.require(:contract).permit(:expiration_date, :hitman_id, :scenario_id, :victim_name, :victim_age, :victim_location, :victim_description, :budget)
   end
 end
