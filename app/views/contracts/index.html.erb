@@ -9,18 +9,17 @@
   <br>
 <% else %>
   <% @contracts.each_with_index do |contract, index| %>
-  <div class="card-product">
-    <%= image_tag "https://avatars.githubusercontent.com/u/146410754?v=4", class: "avatar-large", alt: "avatar-large" %>
-      <div class="card-product-infos">
-        <h2> Contract #<%= index + 1 %>: </h2>
-        <p> To kill: <%= contract.victim_name %>, Age: <%= contract.victim_age %>
-        <p> Selected scenario: <%= contract.scenario.name %> </p>
-        <p> Selected hitman: <%= contract.hitman.user.username %> </p>
-        <p> Contract status: <%= contract.status %>
-      </div>
-  </div>
-      <br>
-    <% end %>
+    <div class="card-product">
+      <%= image_tag "https://avatars.githubusercontent.com/u/146410754?v=4", class: "avatar-large", alt: "avatar-large" %>
+        <div class="card-product-infos">
+          <h2> Contract #<%= index + 1 %>: </h2>
+          <p> To kill: <%= contract.victim_name %>, Age: <%= contract.victim_age %>
+          <p> Selected scenario: <%= contract.scenario.name %> </p>
+          <p> Selected hitman: <%= contract.hitman.user.username %> </p>
+          <p> Contract status: <%= contract.status %>
+        </div>
+    </div>
+  <% end %>
 <% end %>
 
 <%= link_to "Create a new contract", new_contract_path %>
