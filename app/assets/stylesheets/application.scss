@@ -50,22 +50,17 @@
 }
 
 #title{
-  color: white;
   font-size: 80px;
-  font-weight: 200;
-}
-
-.banner h1 {
-  font-size: 20px;
-  color: white;
-  opacity: .7;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-weight: 600;
+  color: red;
+  text-shadow: 14px -7px 20px black;
 }
 
 #defaultBtn{
   color: black;
   border-radius: 7px;
   height: 40px;
+  font-weight: 500;
 }
 #defaultBtn:hover{
   background-color: red;
