@@ -17,6 +17,12 @@ class ContractsController < ApplicationController
   end
 
   def edit
-   # @contract = Contract.find(params[:id])
+    @contract = Contract.find(params[:id])
+  end
+
+  def destroy
+    @contract = Contract.find(params[:id])
+    @contract.destroy
+    redirect_to user_contracts_path, status: :see_other
   end
 end
