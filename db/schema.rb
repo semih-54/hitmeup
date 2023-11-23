@@ -14,28 +14,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_22_082538) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "availabilities", force: :cascade do |t|
-    t.date "start_date"
-    t.date "end_date"
-    t.bigint "hitman_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["hitman_id"], name: "index_availabilities_on_hitman_id"
-  end
-
-  create_table "bookings", force: :cascade do |t|
-    t.string "status"
-    t.bigint "contract_id", null: false
-    t.bigint "hitman_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["contract_id"], name: "index_bookings_on_contract_id"
-    t.index ["hitman_id"], name: "index_bookings_on_hitman_id"
-  end
-
   create_table "contracts", force: :cascade do |t|
     t.date "expiration_date"
-    t.bigint "victim_id", null: false
     t.bigint "scenario_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -50,7 +30,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_22_082538) do
     t.index ["hitman_id"], name: "index_contracts_on_hitman_id"
     t.index ["scenario_id"], name: "index_contracts_on_scenario_id"
     t.index ["user_id"], name: "index_contracts_on_user_id"
-    t.index ["victim_id"], name: "index_contracts_on_victim_id"
   end
 
   create_table "hitman_scenarios", force: :cascade do |t|
@@ -80,17 +59,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_22_082538) do
     t.index ["user_id"], name: "index_hitmen_on_user_id"
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.integer "rating"
-    t.text "comment"
-    t.bigint "booking_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["booking_id"], name: "index_reviews_on_booking_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
-  end
-
   create_table "scenarios", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -117,26 +85,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_22_082538) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "victims", force: :cascade do |t|
-    t.string "name"
-    t.integer "age"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_foreign_key "availabilities", "hitmen"
-  add_foreign_key "bookings", "contracts"
-  add_foreign_key "bookings", "hitmen"
   add_foreign_key "contracts", "hitmen"
   add_foreign_key "contracts", "scenarios"
   add_foreign_key "contracts", "users"
-  add_foreign_key "contracts", "victims"
   add_foreign_key "hitman_scenarios", "hitmen"
   add_foreign_key "hitman_scenarios", "scenarios"
   add_foreign_key "hitman_skills", "hitmen"
   add_foreign_key "hitman_skills", "skills"
   add_foreign_key "hitmen", "users"
-  add_foreign_key "reviews", "bookings"
-  add_foreign_key "reviews", "users"
 end
