@@ -27,7 +27,7 @@ User.create!([{
   email: "xXankit_kumarXx@tikamassala.gov.com",
   username: "Retardinho McLovin",
   password: "123456",
-  is_hitman: true
+  is_hitman: false
 },
 {
   email: "barack@therealone.com.gov",
@@ -36,10 +36,10 @@ User.create!([{
   is_hitman: true
 },
 {
-  email: "ankit_kumar@tikamassala.com",
+  email: "DonaldTrump@thesims.com",
   username: "4DoorsMoreWh*res",
   password: "123456",
-  is_hitman: false
+  is_hitman: true
 },
 {
   email: "fruttenFratten@gmail.com",
