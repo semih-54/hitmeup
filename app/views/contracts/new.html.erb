@@ -8,7 +8,7 @@
   <div class="p-5">
     <div class="">
       <div>
-        <%= simple_form_for @contract do |f| %>
+        <%= simple_form_for @contract, html: { data: { controller: "cards" } } do |f| %>
                 <%= f.input :expiration_date %>
                 <%#= f.input :photo, as: :file %>
                 <%= f.input :victim_name, label: "your victim name:" %>
@@ -16,7 +16,7 @@
                 <%= f.input :victim_location, label: "where to find him/her:" %>
                 <%= f.input :victim_description, label: "Precise victim bio and context:" %>
                 <%= f.input :budget %>
-                <%= f.association :scenario, label: "Choose Kill scenario:" %>
+                <%= f.association :scenario, label: "Choose Kill scenario:", input_html: { data: { action: "change->cards#statusChanged"} } %>
                 <%= f.association :hitman, label: "Choose your Killer:" %>
                 <h1 class="text-center p-5 fs-1"> Choose your Killer</h1>
                 <div class="hitman-cards">
