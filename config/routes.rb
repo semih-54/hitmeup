@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :contracts, only: [:index, :new, :create, :edit, :destroy] do
+  resources :contracts, only: [:index, :new, :create, :edit, :destroy, :update] do
   end
 
   resources :hitmen, only: [:show, :edit, :new, :create]

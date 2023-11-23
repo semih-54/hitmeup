@@ -27,6 +27,13 @@ class ContractsController < ApplicationController
     @contract = Contract.find(params[:id])
   end
 
+  def update
+    @contract = Contract.find(params[:id])
+    @contract.status = params[:contract][:status]
+    @contract.save
+    redirect_to my_contracts_path
+  end
+
   def destroy
     @contract = Contract.find(params[:id])
     @contract.destroy
