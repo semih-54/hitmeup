@@ -1,18 +1,27 @@
-<h2> New contract </h2>
-<br>
-<p> Tell us more about the victim and consider the job done </p>
 
- <%= simple_form_for @contract do |f| %>
-        <%= f.input :expiration_date %>
-        <%#= f.input :photo, as: :file %>
-        <%= f.input :victim_name, label: "your victim name:" %>
-        <%= f.input :victim_age, label: "your victim age:" %>
-        <%= f.input :victim_location, label: "where to find him/her:" %>
-        <%= f.input :victim_description, label: "Precise victim bio and context:" %>
-        <%= f.input :budget %>
-        <%= f.association :scenario, label: "Choose Kill scenario:" %>
-        <%= f.association :hitman, label: "Choose your Killer:" %>
-        <%= f.submit class: 'btn btn-primary' %>
-      <% end %>
-<br>
-<%= link_to "Back to your contracts", contracts_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <h2> New contract </h2>
+      <br>
+      <p> Tell us more about the victim and consider the job done </p>
+
+      <strong>
+      <%= simple_form_for @contract do |f| %>
+              <%= f.input :expiration_date %>
+              <%#= f.input :photo, as: :file %>
+              <%= f.input :victim_name, label: "your victim name:" %>
+              <%= f.input :victim_age, label: "your victim age:" %>
+              <%= f.input :victim_location, label: "where to find him/her:" %>
+              <%= f.input :victim_description, label: "Precise victim bio and context:" %>
+              <%= f.input :budget %>
+              <%= f.association :scenario, label: "Choose Kill scenario:" %>
+              <%= f.association :hitman, label: "Choose your Killer:" %>
+              <%= f.submit class: 'btn btn-primary' %>
+            <% end %>
+      <br>
+      </strong>
+      <%= link_to "Back to your contracts", contracts_path %> |
+    </div>
+  </div>
+<div>
