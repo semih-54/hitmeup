@@ -11,19 +11,28 @@
   </head>
 
   <body>
-    <div class="navbar bg-black px-4" id="nav">
-      <a class="navbar-brand" href="/">
-        <%= image_tag("target.png", alt: "logo", width: 80, height: 80) %>
-      </a>
-      <div>
-        <a class="nav-link_1" href=/contracts > My requests </a>
-        <a class="nav-link_1" href=/my_contracts > My contracts </a>
+     <div class="navbar bg-black px-4" id="nav">
+        <div class="d-flex align-items-center">
+          <a class="navbar-brand" href="/">
+            <%= image_tag("target.png", alt: "logo", width: 110, height: 80) %>
+            <a class="hmu" href="/"> HMU </a>
+          </a>
+        </div>
+
+          <div class="ml-auto d-flex align-items-center">
+            <a class="nav-link_1" href="/contracts">  Requests </a>
+            <a class="nav-link_1" href="/my_contracts">  Contracts </a>
+
+
+            <% if user_signed_in? %>
+              <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-link text-white ml-2 text-decoration-none", id:"log-out-home"%>
+              <% else %>
+              <%= link_to "Log in", new_user_session_path, class: "text-white text-decoration-none", id:"log-in-home" %>
+            <% end %>
+          </div>
       </div>
-    </div>
     <%= yield %>
     <footer>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
     <%= render "shared/flashes" %>
     </footer>
   </body>
