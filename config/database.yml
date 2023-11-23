@@ -79,6 +79,6 @@ test:
 #
 production:
   <<: *default
-  database: hitmeupman_production
+  database: <%= ENV["DATABASE-URL"] %>
   username: hitmeupman
   password: <%= ENV["HITMEUPMAN_DATABASE_PASSWORD"] %>
