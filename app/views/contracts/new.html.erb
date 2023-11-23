@@ -5,7 +5,7 @@
     <h4><u> Tell us more about the victim and consider the job done </u></h4>
   </div>
   <div class="p-5">
-    <div class="form-control">
+    <div class="">
       <div>
         <%= simple_form_for @contract do |f| %>
                 <%= f.input :expiration_date %>
@@ -17,6 +17,50 @@
                 <%= f.input :budget %>
                 <%= f.association :scenario, label: "Choose Kill scenario:" %>
                 <%= f.association :hitman, label: "Choose your Killer:" %>
+                <h1 class="text-center p-5 fs-1"> Choose your Killer</h1>
+                <div class="hitman-cards">
+                  <!-- Card 1 -->
+                  <div class="card-product">
+                    <%= image_tag "https://avatars.githubusercontent.com/u/146410754?v=4", class: "hitman-pic" %>
+                    <div class="card-product-infos">
+                      <h2>Hitman username</h2>
+                      <p><strong>Prefered scenario:</strong> Drowning, Car accident</p>
+                      <p><strong>Birth year:</strong> 1900</p>
+                      <p><strong>Style:</strong> bloody</p>
+                      <br>
+                      <p><strong>Descrpition:</strong> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt, maxime cum corrupti harum adipisci esse illum exercitationem voluptatum facere ipsa sit praesentium nostrum commodi nesciunt accusantium neque alias, ipsam nihil!</p>
+                    </div>
+                  </div>
+                  <!-- Card 2 -->
+                  <div class="card-product">
+                    <%= image_tag "https://avatars.githubusercontent.com/u/146410754?v=4", class: "hitman-pic" %>
+                    <div class="card-product-infos">
+                     <h2>Hitman username</h2>
+                      <p><strong>Prefered scenario:</strong> Drowning, Car accident</p>
+                      <p><strong>Birth year:</strong> 1900</p>
+                      <p><strong>Style:</strong> bloody</p>
+                      <br>
+                      <p><strong>Descrpition:</strong> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt, maxime cum corrupti harum adipisci esse illum exercitationem voluptatum facere ipsa sit praesentium nostrum commodi nesciunt accusantium neque alias, ipsam nihil!</p>
+                    </div>
+                    </div>
+                  </div>
+                  <!--Second row card-->
+                  <div class="middle-card">
+                    <div class="card-product">
+                      <%= image_tag "https://avatars.githubusercontent.com/u/146410754?v=4", class: "hitman-pic" %>
+                      <div class="card-product-infos">
+                        <h2>Hitman username</h2>
+                        <p><strong>Prefered scenario:</strong> Drowning, Car accident</p>
+                        <p><strong>Birth year:</strong> 1900</p>
+                        <p><strong>Style:</strong> bloody</p>
+                        <br>
+                        <p><strong>Descrpition:</strong> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt, maxime cum corrupti harum adipisci esse illum exercitationem voluptatum facere ipsa sit praesentium nostrum commodi nesciunt accusantium neque alias, ipsam nihil!</p>
+                      </div>
+                    </div>
+                  </div>
+                    <!---->
+                  </div>
+                </div>
                 <%= f.submit class: 'btn btn-dark mr-4 ' %>
                 <%= link_to "Back to your contracts", contracts_path, class: "text-black"%>
               <% end %>
