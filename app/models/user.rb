@@ -6,7 +6,6 @@ class User < ApplicationRecord
   has_one :hitman
   has_many :contracts
   has_many :contracts_as_hitman, through: :hitman, source: :contracts
-  # has_one_attached :photo
 
   def hitman?
     !hitman.nil?

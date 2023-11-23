@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-10 col-lg-7 col-sm-offset-1">
+    <div class="col-xs-12 col-sm-10 col-lg-10 col-sm-offset-1">
           <div class="d-flex align-items-center" >
             <%= image_tag "https://avatars.githubusercontent.com/u/147330364?v=4", class: "avatar-large pe-2", alt: "avatar-large" %>
             <div class="card-product-infos mt-3">
@@ -14,21 +14,30 @@
         <br>
       <% else %>
         <% @contracts.each_with_index do |contract, index| %>
-          <div class="card-product">
-            <%= image_tag "https://avatars.githubusercontent.com/u/146410754?v=4", class: "avatar-square", alt: "avatar-square" %>
-              <div class="card-product-infos">
-                <h2> <strong>Contract #<%= index + 1 %>: </strong></h2>
-                <p> <strong> To kill: </strong> <%= contract.victim_name %>, Age: <%= contract.victim_age %>
-                <p> <strong> Selected scenario: </strong> <%= contract.scenario.name %> </p>
-                <p> <strong> Selected hitman: </strong> <%= contract.hitman.user.username %> </p>
-                <p> <strong> Contract status: </strong> <%= contract.status %>
-                <p>
-                <%= link_to "Delete",
-                  contracts_path(contract),
-                  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-                  %>
-                </p>
-              </div>
+          <div class="card-product-with-proof d-flex align-items-center">
+            <div class="card-product">
+              <%= image_tag "https://avatars.githubusercontent.com/u/146410754?v=4", class: "avatar-square", alt: "avatar-square" %>
+                <div class="card-product-infos">
+                  <h2> <strong>Contract #<%= index + 1 %>: </strong></h2>
+                  <p> <strong> To kill: </strong> <%= contract.victim_name %>, Age: <%= contract.victim_age %>
+                  <p> <strong> Selected scenario: </strong> <%= contract.scenario.name %> </p>
+                  <p> <strong> Selected hitman: </strong> <%= contract.hitman.user.username %> </p>
+                  <p> <strong> Contract status: </strong> <%= contract.status %>
+                  <p>
+                  <%= link_to "Delete",
+                    contracts_path(contract),
+                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                    %>
+                  </p>
+                </div>
+            </div>
+            <div class="col-4">
+              <% if contract.proof.attached? %>
+                <%= cl_image_tag contract.proof.key, height: 250, width: 250, crop: :fill %>
+                <% else %>
+                <%= image_tag "placeholder.png", height: 250, width: 250, class: "bg-white" %>
+              <% end %>
+            </div>
           </div>
         <% end %>
       <% end %>
