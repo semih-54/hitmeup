@@ -8,7 +8,7 @@
     <div class="p-5">
       <div>
         <div data-controller="cards">
-          <%= simple_form_for @contract, html: { data: {action: "submit->cards#trigger"}} do |f| %>
+          <%= simple_form_for @contract, html: { style:"background-color: rgba(211,211,211,0.7)", class:"p-5 rounded-3" } do |f| %>
             <%= f.input :expiration_date %>
             <%= f.input :victim_picture, as: :file %>
             <%= f.input :victim_name, label: "your victim name:" %>
@@ -28,13 +28,14 @@
                       <p><strong>Skills:</strong> <%= hitman.skills.first.name %></p>
                       <p><strong>Birth year:</strong> <%= hitman.birth_year %></p>
                       <p><strong>Style:</strong> bloody</p>
-                      <br>
-                      <p><strong>Descrpition:</strong> <%= hitman.description %></p>
+                      <p><strong>Description:</strong> <%= hitman.description %></p>
                     </div>
                   </div>
                 <% end %>
               </div>
-            <%= f.button :submit, class: 'btn btn-dark mr-4' %>
+            <div class="text-center">
+            <%= f.button :submit, value: "Get him/her killed!", class: 'btn btn-dark p-4 rounded' %>
+            </div>
           <% end %>
           <%= link_to "Back to your contracts", contracts_path, class: "text-black"%>
         </div>
