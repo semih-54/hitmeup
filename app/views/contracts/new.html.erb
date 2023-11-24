@@ -10,7 +10,7 @@
       <div>
         <%= simple_form_for @contract, html: { data: { controller: "cards" } } do |f| %>
                 <%= f.input :expiration_date %>
-                <%#= f.input :photo, as: :file %>
+                <%= f.input :victim_picture, as: :file %>
                 <%= f.input :victim_name, label: "your victim name:" %>
                 <%= f.input :victim_age, label: "your victim age:" %>
                 <%= f.input :victim_location, label: "where to find him/her:" %>
@@ -62,7 +62,7 @@
                     <!---->
                   </div>
                 </div>
-                <%= f.submit class: 'btn btn-dark mr-4 ' %>
+                <%= f.submit class: 'btn btn-dark mr-4' %>
                 <%= link_to "Back to your contracts", contracts_path, class: "text-black"%>
               <% end %>
       </div>

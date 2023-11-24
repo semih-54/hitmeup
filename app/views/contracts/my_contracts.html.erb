@@ -16,9 +16,17 @@
   <p> You currently have <%= @contracts.count %> contract(s). </p>
   <br>
   <% @contracts.each_with_index do |contract, index| %>
+
   <div class="card-product-with-proof d-flex align-items-center">
+
   <div class="card-product">
-    <%= image_tag "https://avatars.githubusercontent.com/u/146410754?v=4", class: "avatar-square", alt: "avatar-square" %>
+
+      <% if contract.proof.attached? %>
+                <%= cl_image_tag contract.victime_picture.key, crop: :fill %>
+                <% else %>
+                <%= image_tag "semih_profile.png", class: "bg-white h-100" %>
+      <% end %>
+
       <div class="card-product-infos">
         <h2> <strong> Contract #<%= index + 1 %>: </strong> </h2>
         <p> <strong>To kill:</strong>  <%= contract.victim_name %>, <strong>Age:</strong>  <%= contract.victim_age %>
@@ -51,18 +59,23 @@
               </div>
             <% end %>
         </div>
+
+
+      <% if contract.proof.attached? %>
+        <%= cl_image_tag contract.proof.key, height: 250, width: 250, crop: :fill %>
+        <% else %>
+          <%= image_tag "placeholder.png", class: "bg-white" %>
+        <% end %>
+        </div>
+
       </div>
-      <div class="col-4">
-          <% if contract.proof.attached? %>
-            <%= cl_image_tag contract.proof.key, height: 250, width: 250, crop: :fill %>
-          <% end %>
-          </div>
     </div>
   <br>
   </div>
     <% end %>
 <% end %>
 <br>
+
   <%= link_to "Edit your profile", edit_hitman_path(current_user) %>
     </div>
   </div>
