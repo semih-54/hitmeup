@@ -6,6 +6,7 @@ class ContractsController < ApplicationController
   def new
     @contract = Contract.new
     @hitmen_names = Hitman.all.map { |hitman| hitman.user.username }
+    @hitmen = Hitman.all
   end
 
   def my_contracts
