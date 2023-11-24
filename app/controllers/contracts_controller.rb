@@ -46,6 +46,6 @@ class ContractsController < ApplicationController
   private
 
   def contract_params
-    params.require(:contract).permit(:expiration_date, :hitman_id, :scenario_id, :victim_name, :victim_age, :victim_location, :victim_description, :budget, :proof)
+    params.require(:contract).permit(:expiration_date, :hitman_id, :scenario_id, :victim_name, :victim_age, :victim_location, :victim_description, :budget, :proof, :status, :victim_picture)
   end
 end
