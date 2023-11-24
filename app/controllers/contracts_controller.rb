@@ -41,7 +41,7 @@ class ContractsController < ApplicationController
   def destroy
     @contract = Contract.find(params[:id])
     @contract.destroy
-    redirect_to user_contracts_path, status: :see_other
+    redirect_to contracts_path, status: :see_other
   end
 
   private

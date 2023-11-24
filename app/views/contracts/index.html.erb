@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-10 col-lg-9 col-sm-offset-1">
+    <div class="col-xs-12 col-sm-10 col-lg-9 col-sm-offset-1 text-align-center">
           <div class="d-flex align-items-center" >
             <%= image_tag "https://avatars.githubusercontent.com/u/147330364?v=4", class: "avatar-large pe-2", alt: "avatar-large" %>
             <div class="card-product-infos mt-3">
@@ -36,7 +36,7 @@
                 <p> <strong> Contract status: </strong> <%= contract.status %>
                 <p>
                 <%= link_to "Delete",
-                  contracts_path(contract),
+                  contract_path(contract),
                   data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
                   %>
                 </p>
