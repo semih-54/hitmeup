@@ -21,8 +21,8 @@
 
   <div class="card-product">
 
-      <% if contract.proof.attached? %>
-                <%= cl_image_tag contract.victime_picture.key, crop: :fill %>
+      <% if contract.victim_picture.attached? %>
+                <%= cl_image_tag contract.victim_picture.key, crop: :fill %>
                 <% else %>
                 <%= image_tag "semih_profile.png", class: "bg-white h-100" %>
       <% end %>
