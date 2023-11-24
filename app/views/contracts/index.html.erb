@@ -1,58 +1,12 @@
-<<<<<<< HEAD
 <div class="bg-image">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-lg-9 col-sm-offset-1">
-            <div class="d-flex align-items-center" >
-              <%= image_tag "https://avatars.githubusercontent.com/u/147330364?v=4", class: "avatar-large pe-2", alt: "avatar-large" %>
-              <div class="card-product-infos mt-3">
-                <h3 class="text-white"> Hello contractor <%= current_user.username %>, </h3>
-=======
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-lg-9 col-sm-offset-1 text-align-center">
-          <div class="d-flex align-items-center" >
-            <%= image_tag "https://avatars.githubusercontent.com/u/147330364?v=4", class: "avatar-large pe-2", alt: "avatar-large" %>
-            <div class="card-product-infos mt-3">
-              <h3> Hello contractor <%= current_user.username %>, </h3>
-            </div>
+        <div class="d-flex align-items-center" >
+          <div class="card-product-infos mt-3">
+            <h3 class="text-white"> Hello contractor <%= current_user.username %>, </h3>
           </div>
-      <br>
-
-      <div class="d-flex align-items-center justify-content-between mb-3">
-        <% if @contracts.count == 0 %>
-          <p class="text-center mb-0"> You currently have no contract. </p>
-        <% else %>
-        <p class="text-center mb-0"> You currently have <%= @contracts.count %> contract(s). </p>
-        <div class="d-flex flew-grow-1"></div>
-        <%= link_to "Create a new contract", new_contract_path, class: "btn btn-danger" %>
-      </div>
-
-
-        <% @contracts.each_with_index do |contract, index| %>
-          <div class="card-product-with-proof d-flex align-items-center mb-3">
-            <div class="card-product">
-              <% if contract.victim_picture.attached? %>
-                <%= cl_image_tag contract.victim_picture.key, crop: :fill %>
-                <% else %>
-                <%= image_tag "semih_profile.png", class: "bg-white h-100" %>
-              <% end %>
-
-              <div class="card-product-infos flex-grow-1">
-                <h2> <strong>Contract #<%= index + 1 %>: </strong></h2>
-                <p> <strong> To kill: </strong> <%= contract.victim_name %>, Age: <%= contract.victim_age %>
-                <p> <strong> Selected scenario: </strong> <%= contract.scenario.name %> </p>
-                <p> <strong> Selected hitman: </strong> <%= contract.hitman.user.username %> </p>
-                <p> <strong> Contract status: </strong> <%= contract.status %>
-                <p>
-                <%= link_to "Delete",
-                  contract_path(contract),
-                  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-                  %>
-                </p>
->>>>>>> master
-              </div>
-            </div>
+        </div>
         <br>
 
         <div class="d-flex align-items-center justify-content-between mb-3">
@@ -63,7 +17,6 @@
           <div class="d-flex flew-grow-1"></div>
           <%= link_to "Create a new contract", new_contract_path, class: "btn btn-danger" %>
         </div>
-
 
           <% @contracts.each_with_index do |contract, index| %>
             <div class="card-product-with-proof d-flex align-items-center mb-3">
@@ -82,7 +35,7 @@
                   <p> <strong> Contract status: </strong> <%= contract.status %>
                   <p>
                   <%= link_to "Delete",
-                    contracts_path(contract),
+                    contract_path(contract),
                     data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
                     %>
                   </p>
