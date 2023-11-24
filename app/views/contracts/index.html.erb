@@ -30,8 +30,9 @@
                 <div class="card-product-infos flex-grow-1">
                   <h2> <strong>Contract #<%= index + 1 %>: </strong></h2>
                   <p> <strong> To kill: </strong> <%= contract.victim_name %>, Age: <%= contract.victim_age %>
-                  <p> <strong> Selected scenario: </strong> <%= contract.scenario.name %> </p>
+                  <p> <strong> victim_description: </strong> <%= contract.victim_description %> </p>
                   <p> <strong> Selected hitman: </strong> <%= contract.hitman.user.username %> </p>
+                  <p> <strong> Budget: </strong> <%= contract.budget %> </p>
                   <p> <strong> Contract status: </strong> <%= contract.status %>
                   <p>
                   <%= link_to "Delete",
