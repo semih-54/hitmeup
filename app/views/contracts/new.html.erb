@@ -22,9 +22,9 @@
               <div class="hitman-cards">
                 <% @hitmen.each_with_index do |hitman, index| %>
                   <div class="card-product card-product-big" data-action="click->cards#selected" id="<%= hitman.id %>" data-cards-target ="choice">
-                    <%= image_tag "hitman-#{index + 1}.png", class: "hitman-pic" %>
+                    <%= image_tag "hitman-#{index + 1}.jpg", class: "hitman-pic" %>
                     <div class="card-product-infos">
-                      <h2><%= hitman.user.username %></h2>
+                      <h2 class><%= hitman.user.username %></h2>
                       <p><strong>Skills:</strong> <%= hitman.skills.first.name %></p>
                       <p><strong>Birth year:</strong> <%= hitman.birth_year %></p>
                       <p><strong>Style:</strong> bloody</p>
