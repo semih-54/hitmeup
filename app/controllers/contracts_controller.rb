@@ -30,9 +30,12 @@ class ContractsController < ApplicationController
 
   def update
     @contract = Contract.find(params[:id])
-    @contract.status = params[:contract][:status]
-    @contract.save
-    redirect_to my_contracts_path
+    @contract.update(contract_params)
+    if @contract.save
+      redirect_to my_contracts_path
+    else
+      render :my_contracts, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -44,6 +47,6 @@ class ContractsController < ApplicationController
   private
 
   def contract_params
-    params.require(:contract).permit(:expiration_date, :hitman_id, :scenario_id, :victim_name, :victim_age, :victim_location, :victim_description, :budget)
+    params.require(:contract).permit(:expiration_date, :hitman_id, :scenario_id, :victim_name, :victim_age, :victim_location, :victim_description, :budget, :proof, :status, :victim_picture)
   end
 end

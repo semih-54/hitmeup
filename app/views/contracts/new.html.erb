@@ -10,7 +10,7 @@
       <div data-controller="cards">
         <%= simple_form_for @contract do |f| %>
                 <%= f.input :expiration_date %>
-                <%= f.input :photo, as: :file %>
+                <%= f.input :victim_picture, as: :file %>
                 <%= f.input :victim_name, label: "your victim name:" %>
                 <%= f.input :victim_age, label: "your victim age:" %>
                 <%= f.input :victim_location, label: "where to find him/her:" %>
@@ -22,7 +22,7 @@
 
                   <div class="hitman-cards">
                     <% @hitmen.each do |hitman| %>
-                      <div class="card-product" data-action="click->cards#selected" id="<%= hitman.id %>" data-cards-target ="choice">
+                      <div class="card-product card-product-big" data-action="click->cards#selected" id="<%= hitman.id %>" data-cards-target ="choice">
                         <%= image_tag "https://avatars.githubusercontent.com/u/146410754?v=4", class: "hitman-pic" %>
                         <div class="card-product-infos">
                           <h2><%= hitman.user.username %></h2>
@@ -36,7 +36,7 @@
                     <% end %>
                   </div>
                 </div>
-                <%= f.submit class: 'btn btn-dark mr-4 ' %>
+                <%= f.submit class: 'btn btn-dark mr-4' %>
                 <%= link_to "Back to your contracts", contracts_path, class: "text-black"%>
               <% end %>
       </div>
