@@ -27,7 +27,7 @@ User.create!([{
   email: "xXankit_kumarXx@tikamassala.gov.com",
   username: "Retardinho McLovin",
   password: "123456",
-  is_hitman: false
+  is_hitman: true
 },
 {
   email: "barack@therealone.com.gov",
