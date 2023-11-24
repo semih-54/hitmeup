@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="bg-image">
   <div class="container">
     <div class="row">
@@ -66,4 +67,76 @@
     </div>
     <br>
   </div>
+=======
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-lg-10 col-sm-offset-1">
+      <div class="d-flex align-items-center">
+        <%= image_tag "https://avatars.githubusercontent.com/u/147330364?v=4", class: "avatar-large pe-2", alt: "avatar-large" %>
+        <div class="card-product-infos mt-3">
+          <h3> Hello hitman <%= current_user.username %>, </h3>
+        </div>
+      </div>
+      <br>
+      <% if @contracts.count == 0 %>
+        <p> You currently have no contracts. </p>
+        <br>
+      <% else %>
+        <p> You currently have <%= @contracts.count %> contract(s). </p>
+        <br>
+        <% @contracts.each_with_index do |contract, index| %>
+          <div class="card-product-with-proof d-flex align-items-center">
+            <div class="card-product">
+              <% if contract.victim_picture.attached? %>
+                <%= cl_image_tag contract.victim_picture.key, crop: :fill %>
+              <% else %>
+                <%= image_tag "semih_profile.png", class: "bg-white h-100" %>
+              <% end %>
+
+              <div class="card-product-infos">
+                <h2> <strong> Contract #<%= index + 1 %>: </strong> </h2>
+                <p> <strong>To kill:</strong>  <%= contract.victim_name %>, <strong>Age:</strong>  <%= contract.victim_age %>
+                <p> <strong>Victim description:</strong>  <%= contract.victim_description %>
+                <p class="mb-2"> <strong>Selected scenario:</strong>  <%= contract.scenario.name %> </p>
+                    <%= simple_form_for contract do |f| %>
+                      <div class="d-flex align-items-center" data-controller="upload-picture">
+                        <%= f.input :status, label:"Status:",
+                                    collection: Contract::STATUSES,
+                                    wrapper_html: { class: "d-flex align-items-center my-contract-status margin-none" },
+                                    label_html: { class: "my-contract-status-label m-0 text-status fw-bold"},
+                                    input_html: {
+                                      class: "my-contract-status-select text-status",
+                                      data: {
+                                        action: "change->upload-picture#upload",
+                                      }
+                                    } %>
+                        <%= f.input :proof, as: :file,
+                                    label_html: { class: "d-none"},
+                                    input_html: {
+                                      class: "mt-3 d-none",
+                                      data: {
+                                        upload_picture_target: "proof",
+                                      }
+                                    }%>
+                        <%= f.button :submit, "Update", class: "btn btn-primary text-status" %>
+                      </div>
+                    <% end %>
+              </div>
+
+
+              <% if contract.proof.attached? %>
+                <%= cl_image_tag contract.proof.key, height: 250, width: 250, crop: :fill %>
+              <% else %>
+                <%= image_tag "placeholder.png", class: "bg-white" %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <br>
+  </div>
+  <br>
+>>>>>>> master
 </div>

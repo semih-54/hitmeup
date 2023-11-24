@@ -25,4 +25,8 @@ export default class extends Controller {
      event.currentTarget.classList.add("border-card")
     // event.currentTarget.classList.add("border-danger")
   }
+
+  trigger() {
+    console.log("helloooo submit");
+  }
 }
