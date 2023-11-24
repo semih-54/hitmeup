@@ -1,4 +1,3 @@
-
 <div class="bg-image">
   <div class="container">
     <div class="text-center p-5">
@@ -7,65 +6,38 @@
       <h4 class="text-white"><u> Tell us more about the victim and consider the job done </u></h4>
     </div>
     <div class="p-5">
-      <div class="">
-        <div>
-          <%= simple_form_for @contract do |f| %>
-                  <%= f.input :expiration_date %>
-                  <%#= f.input :photo, as: :file %>
-                  <%= f.input :victim_name, label: "your victim name:" %>
-                  <%= f.input :victim_age, label: "your victim age:" %>
-                  <%= f.input :victim_location, label: "where to find him/her:" %>
-                  <%= f.input :victim_description, label: "Precise victim bio and context:" %>
-                  <%= f.input :budget %>
-                  <%= f.association :scenario, label: "Choose Kill scenario:" %>
-                  <%= f.association :hitman, label: "Choose your Killer:" %>
-                  <h1 class="text-center p-5 fs-1"> Choose your Killer</h1>
-                  <div class="hitman-cards">
-                    <!-- Card 1 -->
-                    <div class="card-product">
-                      <%= image_tag "https://avatars.githubusercontent.com/u/146410754?v=4", class: "hitman-pic" %>
-                      <div class="card-product-infos">
-                        <h2>Hitman username</h2>
-                        <p><strong>Prefered scenario:</strong> Drowning, Car accident</p>
-                        <p><strong>Birth year:</strong> 1900</p>
-                        <p><strong>Style:</strong> bloody</p>
-                        <br>
-                        <p><strong>Descrpition:</strong> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt, maxime cum corrupti harum adipisci esse illum exercitationem voluptatum facere ipsa sit praesentium nostrum commodi nesciunt accusantium neque alias, ipsam nihil!</p>
-                      </div>
-                    </div>
-                    <!-- Card 2 -->
-                    <div class="card-product">
-                      <%= image_tag "https://avatars.githubusercontent.com/u/146410754?v=4", class: "hitman-pic" %>
-                      <div class="card-product-infos">
-                      <h2>Hitman username</h2>
-                        <p><strong>Prefered scenario:</strong> Drowning, Car accident</p>
-                        <p><strong>Birth year:</strong> 1900</p>
-                        <p><strong>Style:</strong> bloody</p>
-                        <br>
-                        <p><strong>Descrpition:</strong> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt, maxime cum corrupti harum adipisci esse illum exercitationem voluptatum facere ipsa sit praesentium nostrum commodi nesciunt accusantium neque alias, ipsam nihil!</p>
-                      </div>
-                      </div>
-                    </div>
-                    <!--Second row card-->
-                    <div class="middle-card">
-                      <div class="card-product">
-                        <%= image_tag "https://avatars.githubusercontent.com/u/146410754?v=4", class: "hitman-pic" %>
-                        <div class="card-product-infos">
-                          <h2>Hitman username</h2>
-                          <p><strong>Prefered scenario:</strong> Drowning, Car accident</p>
-                          <p><strong>Birth year:</strong> 1900</p>
-                          <p><strong>Style:</strong> bloody</p>
-                          <br>
-                          <p><strong>Descrpition:</strong> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt, maxime cum corrupti harum adipisci esse illum exercitationem voluptatum facere ipsa sit praesentium nostrum commodi nesciunt accusantium neque alias, ipsam nihil!</p>
-                        </div>
-                      </div>
-                    </div>
-                      <!---->
+      <div>
+        <div data-controller="cards">
+          <%= simple_form_for @contract, html: { data: {action: "submit->cards#trigger"}} do |f| %>
+            <%= f.input :expiration_date %>
+            <%= f.input :victim_picture, as: :file %>
+            <%= f.input :victim_name, label: "your victim name:" %>
+            <%= f.input :victim_age, label: "your victim age:" %>
+            <%= f.input :victim_location, label: "where to find him/her:" %>
+            <%= f.input :victim_description, label: "Precise victim bio and context:" %>
+            <%= f.input :budget %>
+            <%= f.association :scenario, label: "Choose Kill scenario:" %>
+            <%= f.association :hitman, label: "Choose your Killer:", input_html: { data: { cards_target: "hitman" } }  %>
+            <h1 class="text-center p-5 fs-1" class="text-white"> Choose your Killer</h1>
+              <div class="hitman-cards">
+                <% @hitmen.each_with_index do |hitman, index| %>
+                  <div class="card-product card-product-big" data-action="click->cards#selected" id="<%= hitman.id %>" data-cards-target ="choice">
+                    <%= image_tag "hitman-#{index + 1}.png", class: "hitman-pic" %>
+                    <div class="card-product-infos">
+                      <h2><%= hitman.user.username %></h2>
+                      <p><strong>Skills:</strong> <%= hitman.skills.first.name %></p>
+                      <p><strong>Birth year:</strong> <%= hitman.birth_year %></p>
+                      <p><strong>Style:</strong> bloody</p>
+                      <br>
+                      <p><strong>Descrpition:</strong> <%= hitman.description %></p>
                     </div>
                   </div>
-                  <%= f.submit class: 'btn btn-dark mr-4 ' %>
-                  <%= link_to "Back to your contracts", contracts_path, class: "text-black"%>
                 <% end %>
+              </div>
+            </div>
+            <%= f.button :submit, class: 'btn btn-dark mr-4' %>
+          <% end %>
+          <%= link_to "Back to your contracts", contracts_path, class: "text-black"%>
         </div>
       </div>
     </div>
